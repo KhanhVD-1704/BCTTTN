@@ -42,12 +42,18 @@ Viết theo đúng thứ tự mục lục. Khi thêm Chương 2, Chương 3 ho�
 
 ## Cách làm tự chủ
 
-1. Khi bắt đầu, đọc file này và rà soát `VuDuyKhanh_BCTTTN.docx` để nhận ra phần nào đã xong, phần nào còn thiếu. Không hỏi lại thông tin đã có trong tài liệu hoặc cuộc trò chuyện.
+1. Khi bắt đầu, đọc file này và rà soát `VuDuyKhanh_BCTTTN.docx` để nhận ra phần nào đã xong, phần nào còn thiếu. Không hỏi lại thông tin đã có trong tài liệu hoặc cuộc trò chuyện. Mỗi khi người dùng nhấn Ctrl+S hoặc có dấu hiệu lưu trong ONLYOFFICE, coi đó là tín hiệu người dùng đã sửa và lưu bản DOCX hiện hành; trước khi sửa tiếp, đọc lại đúng tệp mới nhất trên đĩa và lấy phiên bản đó làm cơ sở.
 2. Làm lần lượt theo mục lục, viết trực tiếp vào Word và lưu sau từng chặng hợp lý. Tự xử lý các quyết định biên tập thông thường; không dừng để xin phép sau mỗi tiểu mục.
 3. Dùng thông tin công khai và nguồn chính thức để hoàn thiện các phần giới thiệu HSPTEK, công nghệ, dịch vụ và sản phẩm. Tách rõ nội dung do công ty công bố với nhận xét của sinh viên.
 4. Tiếp tục hoàn thiện mọi phần có thể làm căn cứ. Nếu thiếu dữ kiện cá nhân, diễn đạt giới hạn ở mức khái quát hoặc lược bỏ chi tiết; không bịa và không tạo dấu nhắc trong bản nộp nếu không cần thiết.
 5. Không đặt câu hỏi thường lệ. Chỉ nêu một điểm cần người dùng quyết định khi không thể tiếp tục an toàn hoặc chính xác nếu thiếu quyết định đó; nếu có thể, tiếp tục bằng phương án thận trọng.
 6. Trước khi báo cáo hoàn tất, rà soát toàn văn, định dạng, mục lục, trường số trang, trích dẫn và danh mục tài liệu tham khảo. Không tuyên bố đã xác minh kết quả kỹ thuật cá nhân nếu người dùng chưa xác nhận.
+
+### Đồng bộ bản DOCX sau khi người dùng lưu
+
+- Trước mọi chỉnh sửa DOCX, kiểm tra thời gian sửa đổi, SHA-256 và trạng thái Git; sau dấu hiệu Ctrl+S của người dùng, đọc lại bản đang có trên đĩa rồi mới thao tác. Luôn áp dụng thay đổi trên bản mới nhất, không ghi đè bằng bản sao, bản render hoặc nội dung đã giữ trong bộ nhớ từ lần trước.
+- Nếu thời gian sửa đổi hoặc SHA-256 đổi trong lúc đang làm, dừng thao tác ghi và nạp lại DOCX mới nhất trước khi tiếp tục. Giữ nguyên các thay đổi đã lưu của người dùng; chỉ đưa DOCX vào commit khi có chỉnh sửa đã lưu cần đồng bộ.
+- Không xóa hoặc đưa tệp khóa tạm của ONLYOFFICE vào Git. Khi tài liệu vẫn đang mở, đọc bản đã lưu trên đĩa và kiểm tra lại trước thao tác ghi để tránh thay đổi mới của người dùng bị ghi đè.
 
 ## Quy tắc độ chính xác
 
@@ -128,6 +134,7 @@ Báo cáo có thể hoàn tất trên cơ sở thông tin người dùng đã cu
 - Ngày 28/09/2026, tiếp tục kiểm tra worktree sau khi cập nhật từ máy công ty: local `main` và `origin/main` đã được tích hợp; máy agent hiện tại là Ubuntu 24.04 với ONLYOFFICE APT 9.4.0-129, còn máy công ty Ubuntu 22.04.5 x86_64 có AppImage user-level đã mở DOCX thành công theo ghi nhận ở phiên trên máy đó. DOCX giữ SHA-256 `cb32a0c9284ac6f199cfc81a360687e757224b93755fd96c8c7ecf97c3a266fb`; ZIP hợp lệ, `updateFields=true`, 64 trang A4, 97/97 PAGEREF khớp bản xem trước, 35 nguồn, 16 chú thích thân bài đều in nghiêng, không có trích dẫn `[số]` trong nội dung. Không sửa nội dung DOCX vì không có dữ kiện cá nhân mới được xác nhận; việc tiếp theo là tiếp tục trên máy công ty bằng AppImage sẵn có khi người dùng yêu cầu, hoặc bổ sung phần trải nghiệm khi có dữ kiện đã xác nhận.
 
 - Ngày 28/09/2026, theo yêu cầu người dùng, đã bỏ khỏi Mở đầu đoạn tóm lược bộ phận BSP, nền tảng Qualcomm/Linux và định hướng Network trước phần mục tiêu; đoạn trích người dùng gửi không còn nguyên văn trong DOCX đồng bộ, nên đã xóa đoạn tương ứng còn lại. Thông tin BSP/Network và trạng thái tìm hiểu vẫn được giữ tại các phần phạm vi, Chương 1–2 phù hợp; không thêm hoặc bỏ dữ kiện kỹ thuật đã xác nhận ở các chương này. Bản xem trước sau chỉnh sửa vẫn 64 trang A4; 97/97 trường PAGEREF khớp trang render, DOCX hợp lệ và `updateFields=true`. SHA-256 mới: `07f3afb4c692fb876ef8862d99f9716db9e939bad0638344963cbe7494b5741c`. Việc tiếp theo là tiếp tục theo yêu cầu mới; dữ kiện về tên/chi tiết bo mạch, bằng chứng xử lý, nguyên nhân và kết quả debug vẫn chưa được xác nhận.
+- Ngày 28/09/2026, theo chỉ dẫn của người dùng, đã ghi quy tắc đồng bộ: dấu hiệu Ctrl+S nghĩa là người dùng đã sửa và lưu DOCX; mọi lần sửa tiếp theo phải đọc lại bản mới nhất trên đĩa, đối chiếu thời gian sửa đổi/SHA/Git và không ghi đè bằng bản cũ hoặc nội dung giữ trong bộ nhớ. Khi ghi nhận quy tắc, SHA-256 DOCX vẫn là `07f3afb4c692fb876ef8862d99f9716db9e939bad0638344963cbe7494b5741c`, trùng bản commit gần nhất; tệp khóa ONLYOFFICE đang hiện diện, được giữ nguyên và không đưa vào Git. DOCX không bị thay đổi.
 
 ### Bàn giao để tiếp tục ở phiên Codex sau
 
